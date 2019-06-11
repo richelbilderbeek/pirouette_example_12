@@ -58,11 +58,6 @@ for (i in seq_along(pir_params$experiments)) {
   pir_params$experiments[[i]]$beast2_options$beast2_working_dir <- example_folder
   pir_params$experiments[[i]]$errors_filename <- file.path(example_folder, "error_best.csv")
 }
-pir_params$experiments[[1]]$beast2_options$input_filename <- file.path(example_folder, "beast2_input_gen.xml")
-pir_params$experiments[[1]]$beast2_options$output_log_filename <- file.path(example_folder, "beast2_output_gen.log")
-pir_params$experiments[[1]]$beast2_options$output_trees_filenames <- file.path(example_folder, "beast2_output_gen.trees")
-pir_params$experiments[[1]]$beast2_options$output_state_filename <- file.path(example_folder, "beast2_output_gen.xml.state")
-pir_params$experiments[[1]]$errors_filename <- file.path(example_folder, "error_gen.csv")
 pir_params$evidence_filename <- file.path(example_folder, "evidence_true.csv")
 if (!is_one_na(pir_params$twinning_params)) {
   pir_params$twinning_params$twin_tree_filename <- file.path(example_folder, "twin.tree")
@@ -162,16 +157,8 @@ print("#######################################################################")
 print("ESSes")
 print("#######################################################################")
 testit::assert(pir_params$experiments[[1]]$inference_model$mcmc$store_every != -1)
-esses_gen <- tracerer::calc_esses(
-  traces = tracerer::parse_beast_log(pir_params$experiments[[1]]$beast2_options$output_log_filename),
-  sample_interval = pir_params$experiments[[1]]$inference_model$mcmc$store_every
-)
 esses_best <- tracerer::calc_esses(
   traces = tracerer::parse_beast_log(pir_params$experiments[[2]]$beast2_options$output_log_filename),
-  sample_interval = pir_params$experiments[[1]]$inference_model$mcmc$store_every
-)
-esses_twin_gen <- tracerer::calc_esses(
-  traces = tracerer::parse_beast_log(to_twin_filename(pir_params$experiments[[1]]$beast2_options$output_log_filename)),
   sample_interval = pir_params$experiments[[1]]$inference_model$mcmc$store_every
 )
 esses_twin_best <- tracerer::calc_esses(
@@ -179,22 +166,8 @@ esses_twin_best <- tracerer::calc_esses(
   sample_interval = pir_params$experiments[[1]]$inference_model$mcmc$store_every
 )
 
-df_esses_gen <- data.frame(parameter = colnames(esses_gen), ESS = as.character(esses_gen))
 df_esses_best <- data.frame(parameter = colnames(esses_best), ESS = as.character(esses_best))
-df_esses_twin_gen <- data.frame(parameter = colnames(esses_twin_gen), ESS = as.character(esses_twin_gen))
 df_esses_twin_best <- data.frame(parameter = colnames(esses_twin_best), ESS = as.character(esses_twin_best))
-
-sink(file.path(example_folder, "esses_gen.latex"))
-xtable::print.xtable(
-  xtable::xtable(
-    df_esses_gen,
-    caption = paste0("ESSes of example ", example_no, " for generative model"),
-    label = paste0("tab:esses_example_", example_no, "_gen"),
-    digits = 0
-  ),
-  include.rownames = FALSE
-)
-sink()
 
 sink(file.path(example_folder, "esses_best.latex"))
 xtable::print.xtable(
@@ -202,18 +175,6 @@ xtable::print.xtable(
     df_esses_best,
     caption = paste0("ESSes of example ", example_no, " for best candidate model"),
     label = paste0("tab:esses_example_", example_no, "_best"),
-    digits = 0
-  ),
-  include.rownames = FALSE
-)
-sink()
-
-sink(file.path(example_folder, "esses_twin_gen.latex"))
-xtable::print.xtable(
-  xtable::xtable(
-    df_esses_twin_gen,
-    caption = paste0("ESSes of example ", example_no, " for generative model, twin tree"),
-    label = paste0("tab:esses_example_", example_no, "_twin_gen"),
     digits = 0
   ),
   include.rownames = FALSE
