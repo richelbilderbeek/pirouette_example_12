@@ -1,0 +1,20 @@
+% latex table generated in R 3.6.0 by xtable 1.8-4 package
+% Tue Jun 11 13:36:16 2019
+\begin{table}[ht]
+\centering
+\begin{tabular}{ll}
+  \hline
+parameter & ESS \\ 
+  \hline
+posterior & 10001 \\ 
+  likelihood & 10001 \\ 
+  prior & 9898 \\ 
+  treeLikelihood & 10001 \\ 
+  TreeHeight & 10001 \\ 
+  YuleModel & 9898 \\ 
+  birthRate & 9434 \\ 
+   \hline
+\end{tabular}
+\caption{ESSes of example 12 for best candidate model} 
+\label{tab:esses_example_12_best}
+\end{table}
