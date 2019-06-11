@@ -6,7 +6,7 @@ suppressMessages(library(ggplot2))
 suppressMessages(library(ggtree))
 
 root_folder <- getwd()
-example_no <- 11
+example_no <- 12
 example_folder <- file.path(root_folder, paste0("example_", example_no))
 dir.create(example_folder, showWarnings = FALSE, recursive = TRUE)
 setwd(example_folder)
