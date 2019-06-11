@@ -1,0 +1,30 @@
+<itsabeastystatewerein version='2.0' sample='10000000'>
+<statenode id='Tree.t:true'>((0:2.115213385095956,(1:1.95696639998775,2:1.95696639998775)7:0.15824698510820578)9:0.40745743526173284,((3:1.8437061468468086,4:1.8437061468468086)8:0.25489680227459477,5:2.0986029491214033)6:0.4240678712362853)10:0.0</statenode>
+<statenode id='rateAC.s:true'>rateAC.s:true[1 1] (0.0,Infinity): 0.6595631506295611 </statenode>
+<statenode id='rateAG.s:true'>rateAG.s:true[1 1] (0.0,Infinity): 0.26255503691478754 </statenode>
+<statenode id='rateAT.s:true'>rateAT.s:true[1 1] (0.0,Infinity): 0.31797619243123015 </statenode>
+<statenode id='rateCG.s:true'>rateCG.s:true[1 1] (0.0,Infinity): 4.16845421261127 </statenode>
+<statenode id='rateGT.s:true'>rateGT.s:true[1 1] (0.0,Infinity): 0.002019925541546831 </statenode>
+<statenode id='freqParameter.s:true'>freqParameter.s:true[4 1] (0.0,1.0): 0.24709693361661772 0.23556786152929265 0.2531936738939468 0.2641415309601429 </statenode>
+<statenode id='bPopSizes.t:true'>bPopSizes.t:true[5 1] (0.0,380000.0): 7.134725941258879 12.062538487058939 3.389044776424087 1.0135605816050361 0.2032019555117064 </statenode>
+<statenode id='bGroupSizes.t:true'>bGroupSizes.t:true[5 1] (-2147483647,2147483646): 7 30 -35 -68 71 </statenode>
+</itsabeastystatewerein>
+<!--
+{"operators":[
+{"id":"popSizesScaler.t:true","p":0.75,"accept":37490,"reject":7599,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"groupSizesDelta.t:true","p":1,"accept":13358,"reject":4615,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BayesianSkylineTreeScaler.t:true","p":0.5,"accept":1395,"reject":7520,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BayesianSkylineTreeRootScaler.t:true","p":0.5,"accept":1738,"reject":7295,"acceptFC":0,"rejectFC":0,"rejectIv":1749,"rejectOp":1749},
+{"id":"BayesianSkylineUniformOperator.t:true","p":"NaN","accept":27579,"reject":61891,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BayesianSkylineSubtreeSlide.t:true","p":1,"accept":13174,"reject":31653,"acceptFC":0,"rejectFC":0,"rejectIv":5913,"rejectOp":5913},
+{"id":"BayesianSkylineNarrow.t:true","p":"NaN","accept":20311,"reject":24571,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BayesianSkylineWide.t:true","p":"NaN","accept":1309,"reject":7738,"acceptFC":0,"rejectFC":0,"rejectIv":4970,"rejectOp":4970},
+{"id":"BayesianSkylineWilsonBalding.t:true","p":"NaN","accept":539,"reject":8430,"acceptFC":0,"rejectFC":0,"rejectIv":4285,"rejectOp":4285},
+{"id":"RateACScaler.s:true","p":0.5,"accept":92,"reject":200,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"RateAGScaler.s:true","p":0.5,"accept":110,"reject":192,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"RateATScaler.s:true","p":0.5,"accept":98,"reject":203,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"RateCGScaler.s:true","p":0.5,"accept":58,"reject":225,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"RateGTScaler.s:true","p":0.5,"accept":194,"reject":117,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"FrequenciesExchanger.s:true","p":0.01,"accept":159,"reject":147,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0}
+]}
+-->
