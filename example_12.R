@@ -1,6 +1,32 @@
 # Code of example 12
 #
 # Works under Linux and MacOS only
+#
+#
+
+# Set the RNG seed
+rng_seed <- 314
+args <- commandArgs(trailingOnly = TRUE)
+if (length(args) == 1) {
+  arg <- suppressWarnings(as.numeric(args[1]))
+  if (is.na(arg)) {
+    stop(
+      "Please supply a numerical value for the RNG seed. \n",
+      "Actual value: ", args[1]
+    )
+  }
+  rng_seed <- arg
+  if (rng_seed < 1) {
+    stop("Please supply an RNG seed with a positive non-zero value")
+  }
+}
+if (length(args) > 1) {
+  stop(
+    "Please supply only 1 argument for the RNG seed. \n",
+    "Number of arguments given: ", length(args) - 1
+  )
+}
+
 library(pirouette)
 suppressMessages(library(ggplot2))
 suppressMessages(library(ggtree))
@@ -10,7 +36,7 @@ example_no <- 12
 example_folder <- file.path(root_folder, paste0("example_", example_no))
 dir.create(example_folder, showWarnings = FALSE, recursive = TRUE)
 setwd(example_folder)
-set.seed(314)
+set.seed(rng_seed)
 testit::assert(is_beast2_installed())
 phylogeny  <- ape::read.tree(
   text = "(((A:8, B:8):1, C:9):1, ((D:8, E:8):1, F:9):1);"
@@ -18,7 +44,8 @@ phylogeny  <- ape::read.tree(
 
 alignment_params <- create_alignment_params(
   root_sequence = create_blocked_dna(length = 1000),
-  mutation_rate = 0.1
+  mutation_rate = 0.1,
+  rng_seed = rng_seed
 )
 
 # All experiments
