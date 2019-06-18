@@ -1,0 +1,22 @@
+<itsabeastystatewerein version='2.0' sample='10000000'>
+<statenode id='Tree.t:true'>(((0:0.9113752515295895,(1:0.6811086605174234,2:0.6811086605174234)6:0.23026659101216618)7:0.20667380589639872,(3:0.8825212095116237,4:0.8825212095116237)9:0.23552784791436454)8:0.04551088208342868,5:1.163559939509417)10:0.0</statenode>
+<statenode id='ucldStdev.c:true'>ucldStdev.c:true[1 1] (0.0,Infinity): 0.38778271048280477 </statenode>
+<statenode id='rateCategories.c:true'>rateCategories.c:true[10 1] (0,9): 3 7 8 5 2 3 2 5 5 3 </statenode>
+<statenode id='birthRate.t:true'>birthRate.t:true[1 1] (-Infinity,Infinity): 0.5326842883733474 </statenode>
+</itsabeastystatewerein>
+<!--
+{"operators":[
+{"id":"YuleBirthRateScaler.t:true","p":0.75,"accept":4944,"reject":1045,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelTreeScaler.t:true","p":0.5,"accept":867,"reject":5087,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelTreeRootScaler.t:true","p":0.5,"accept":737,"reject":5252,"acceptFC":0,"rejectFC":0,"rejectIv":1504,"rejectOp":1504},
+{"id":"YuleModelUniformOperator.t:true","p":"NaN","accept":21764,"reject":38024,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelSubtreeSlide.t:true","p":1,"accept":3900,"reject":25789,"acceptFC":0,"rejectFC":0,"rejectIv":8335,"rejectOp":8335},
+{"id":"YuleModelNarrow.t:true","p":"NaN","accept":12041,"reject":17627,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelWide.t:true","p":"NaN","accept":834,"reject":5083,"acceptFC":0,"rejectFC":0,"rejectIv":3240,"rejectOp":3240},
+{"id":"YuleModelWilsonBalding.t:true","p":"NaN","accept":436,"reject":5658,"acceptFC":0,"rejectFC":0,"rejectIv":3063,"rejectOp":3063},
+{"id":"ucldStdevScaler.c:true","p":0.5,"accept":2163,"reject":3643,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"CategoriesRandomWalk.c:true","p":"NaN","accept":8316,"reject":11706,"acceptFC":0,"rejectFC":0,"rejectIv":7643,"rejectOp":7643},
+{"id":"CategoriesSwapOperator.c:true","p":"NaN","accept":11352,"reject":8777,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"CategoriesUniform.c:true","p":"NaN","accept":12341,"reject":7614,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0}
+]}
+-->
