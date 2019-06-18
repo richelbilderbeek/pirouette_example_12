@@ -32,7 +32,7 @@ name="alignment">
 <map name="OneOnX" >beast.math.distributions.OneOnX</map>
 
 
-<run id="mcmc" spec="beast.gss.NS" chainLength="10000000" particleCount="1" subChainLength="5000" epsilon="1e-12">
+<run id="mcmc" spec="MCMC" chainLength="10000000" storeEvery="1000">
     <state id="state" storeEvery="5000">
         <tree id="Tree.t:true" name="stateNode">
             <taxonset id="TaxonSet.true" spec="TaxonSet">
@@ -41,7 +41,8 @@ name="alignment">
         </tree>
         <parameter id="ucldStdev.c:true" lower="0.0" name="stateNode">0.1</parameter>
         <stateNode id="rateCategories.c:true" spec="parameter.IntegerParameter" dimension="10">1</stateNode>
-        <parameter id="birthRate.t:true" name="stateNode">1.0</parameter>
+        <parameter id="ePopSize.t:true" name="stateNode">0.3</parameter>
+        <parameter id="growthRate.t:true" name="stateNode">3.0E-4</parameter>
     </state>
 
     <init id="RandomTree.t:true" spec="beast.evolution.tree.RandomTree" estimate="false" initial="@Tree.t:true" taxa="@true">
@@ -52,9 +53,18 @@ name="alignment">
 
     <distribution id="posterior" spec="util.CompoundDistribution">
         <distribution id="prior" spec="util.CompoundDistribution">
-            <distribution id="YuleModel.t:true" spec="beast.evolution.speciation.YuleModel" birthDiffRate="@birthRate.t:true" tree="@Tree.t:true"/>
-            <prior id="YuleBirthRatePrior.t:true" name="distribution" x="@birthRate.t:true">
-                <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+            <distribution id="CoalescentExponential.t:true" spec="Coalescent">
+                <populationModel id="ExponentialGrowth.t:true" spec="ExponentialGrowth" growthRate="@growthRate.t:true" popSize="@ePopSize.t:true"/>
+                <treeIntervals id="TreeIntervals.t:true" spec="TreeIntervals" tree="@Tree.t:true"/>
+            </distribution>
+            <prior id="ePopSizePrior.t:true" name="distribution" x="@ePopSize.t:true">
+                <OneOnX id="OneOnX.100" name="distr"/>
+            </prior>
+            <prior id="GrowthRatePrior.t:true" name="distribution" x="@growthRate.t:true">
+                <LaplaceDistribution id="LaplaceDistribution.101" name="distr">
+                    <parameter id="RealParameter.200" estimate="false" name="mu">0</parameter>
+                    <parameter id="RealParameter.201" estimate="false" name="scale">1</parameter>
+                </LaplaceDistribution>
             </prior>
             <prior id="ucldStdevPrior.c:true" name="distribution" x="@ucldStdev.c:true">
                 <Gamma id="Gamma.0" name="distr">
@@ -81,21 +91,23 @@ name="alignment">
         </distribution>
     </distribution>
 
-    <operator id="YuleBirthRateScaler.t:true" spec="ScaleOperator" parameter="@birthRate.t:true" scaleFactor="0.75" weight="3.0"/>
+    <operator id="ePopSizeScaler.t:true" spec="ScaleOperator" parameter="@ePopSize.t:true" scaleFactor="0.75" weight="3.0"/>
 
-    <operator id="YuleModelTreeScaler.t:true" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:true" weight="3.0"/>
+    <operator id="GrowthRateRandomWalk.t:true" spec="RealRandomWalkOperator" parameter="@growthRate.t:true" weight="3.0" windowSize="1.0"/>
 
-    <operator id="YuleModelTreeRootScaler.t:true" spec="ScaleOperator" rootOnly="true" scaleFactor="0.5" tree="@Tree.t:true" weight="3.0"/>
+    <operator id="CoalescentExponentialTreeScaler.t:true" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:true" weight="3.0"/>
 
-    <operator id="YuleModelUniformOperator.t:true" spec="Uniform" tree="@Tree.t:true" weight="30.0"/>
+    <operator id="CoalescentExponentialTreeRootScaler.t:true" spec="ScaleOperator" rootOnly="true" scaleFactor="0.5" tree="@Tree.t:true" weight="3.0"/>
 
-    <operator id="YuleModelSubtreeSlide.t:true" spec="SubtreeSlide" tree="@Tree.t:true" weight="15.0"/>
+    <operator id="CoalescentExponentialUniformOperator.t:true" spec="Uniform" tree="@Tree.t:true" weight="30.0"/>
 
-    <operator id="YuleModelNarrow.t:true" spec="Exchange" tree="@Tree.t:true" weight="15.0"/>
+    <operator id="CoalescentExponentialSubtreeSlide.t:true" spec="SubtreeSlide" tree="@Tree.t:true" weight="15.0"/>
 
-    <operator id="YuleModelWide.t:true" spec="Exchange" isNarrow="false" tree="@Tree.t:true" weight="3.0"/>
+    <operator id="CoalescentExponentialNarrow.t:true" spec="Exchange" tree="@Tree.t:true" weight="15.0"/>
 
-    <operator id="YuleModelWilsonBalding.t:true" spec="WilsonBalding" tree="@Tree.t:true" weight="3.0"/>
+    <operator id="CoalescentExponentialWide.t:true" spec="Exchange" isNarrow="false" tree="@Tree.t:true" weight="3.0"/>
+
+    <operator id="CoalescentExponentialWilsonBalding.t:true" spec="WilsonBalding" tree="@Tree.t:true" weight="3.0"/>
 
     <operator id="ucldStdevScaler.c:true" spec="ScaleOperator" parameter="@ucldStdev.c:true" scaleFactor="0.5" weight="3.0"/>
 
@@ -113,8 +125,9 @@ name="alignment">
         <log id="TreeHeight.t:true" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:true"/>
         <log idref="ucldStdev.c:true"/>
         <log id="rate.c:true" spec="beast.evolution.branchratemodel.RateStatistic" branchratemodel="@RelaxedClock.c:true" tree="@Tree.t:true"/>
-        <log idref="YuleModel.t:true"/>
-        <log idref="birthRate.t:true"/>
+        <log idref="CoalescentExponential.t:true"/>
+        <log idref="ePopSize.t:true"/>
+        <log idref="growthRate.t:true"/>
     </logger>
 
     <logger id="screenlog" logEvery="1000">
