@@ -63,15 +63,15 @@ script:
   - #if [ ! -f example_12_314/true_error_violin_gen.png ]; then echo "file 'true_error_violin_gen.png' not found" ; exit 1 ; fi
   - if [ ! -f example_12_314/true_posterior_best.png ]; then echo "file 'true_posterior_best.png' not found" ; exit 1 ; fi
   - #if [ ! -f example_12_314/true_posterior_gen.png ]; then echo "file 'true_posterior_gen.png' not found" ; exit 1 ; fi
-  - if [ ! -f example_12_314/twin_alignment.png ]; then echo "file 'twin_alignment.png' not found" ; exit 1 ; fi
-  - if [ ! -f example_12_314/twin_error_violin_best.png ]; then echo "file 'twin_error_violin_best.png' not found" ; exit 1 ; fi
+  - #if [ ! -f example_12_314/twin_alignment.png ]; then echo "file 'twin_alignment.png' not found" ; exit 1 ; fi
+  - #if [ ! -f example_12_314/twin_error_violin_best.png ]; then echo "file 'twin_error_violin_best.png' not found" ; exit 1 ; fi
   - #if [ ! -f example_12_314/twin_error_violin_gen.png ]; then echo "file 'twin_error_violin_gen.png' not found" ; exit 1 ; fi
-  - if [ ! -f example_12_314/twin_posterior_best.png ]; then echo "file 'twin_posterior_best.png' not found" ; exit 1 ; fi
+  - #if [ ! -f example_12_314/twin_posterior_best.png ]; then echo "file 'twin_posterior_best.png' not found" ; exit 1 ; fi
   - #if [ ! -f example_12_314/twin_posterior_gen.png ]; then echo "file 'twin_posterior_gen.png' not found" ; exit 1 ; fi
-  - if [ ! -f example_12_314/twin_tree.png ]; then echo "file 'twin_tree.png' not found" ; exit 1 ; fi
+  - #if [ ! -f example_12_314/twin_tree.png ]; then echo "file 'twin_tree.png' not found" ; exit 1 ; fi
   # Check dead links
   - rm .travis.yml
   - ./scripts/check_dead_links
 
 after_success:
-  - cd ~/GitHubs/pirouette_article; find .
+  - cd example_12_314 ; find .
