@@ -43,7 +43,6 @@ phylogeny  <- ape::read.tree(
 
 alignment_params <- create_alignment_params(
   root_sequence = create_blocked_dna(length = 1000),
-  mutation_rate = 0.1,
   rng_seed = rng_seed
 )
 
@@ -78,8 +77,6 @@ pir_params <- create_pir_params(
   experiments = experiments
 )
 
-# Make Peregrine friendly
-pir_params <- peregrine::to_pff_pir_params(pir_params)
 rm_pir_param_files(pir_params)
 
 errors <- pir_run(
