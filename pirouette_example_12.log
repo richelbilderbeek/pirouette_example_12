@@ -1,0 +1,58 @@
+Loading required package: beautier
+Loading required package: babette
+Loading required package: beastier
+Loading required package: mauricer
+Loading required package: tracerer
+Registered S3 method overwritten by 'pryr':
+  method      from
+  print.bytes Rcpp
+Saving 7 x 7 in image
+[1] "/home/p230198/GitHubs/pirouette_example_12/example_12_314/true_tree.png"                
+[2] "/home/p230198/GitHubs/pirouette_example_12/example_12_314/true_alignment.png"           
+[3] "/home/p230198/GitHubs/pirouette_example_12/example_12_314/true_posterior_best.png"      
+[4] "/home/p230198/GitHubs/pirouette_example_12/example_12_314/true_error_histogram_best.png"
+[5] "/home/p230198/GitHubs/pirouette_example_12/example_12_314/true_error_violin_best.png"   
+[1] "/home/p230198/GitHubs/pirouette_example_12/example_12_314/evidence_true.latex"
+[2] "/home/p230198/GitHubs/pirouette_example_12/example_12_314/esses_best.latex"   
+
+real	29m44.587s
+user	28m3.622s
+sys	0m40.826s
+
+
+###############################################################################
+Peregrine Cluster
+Job 9635675 for user 'p230198'
+Finished at: Wed Feb 19 15:00:49 CET 2020
+
+Job details:
+============
+
+Name                : pirouette_example_12
+User                : p230198
+Partition           : regular
+Nodes               : pg-node166
+Cores               : 1
+State               : COMPLETED
+Submit              : 2020-02-19T14:30:18
+Start               : 2020-02-19T14:31:03
+End                 : 2020-02-19T15:00:49
+Reserved walltime   : 1-00:00:00
+Used walltime       :   00:29:46
+Used CPU time       :   00:28:45 (efficiency: 96.59%)
+% User (Computation): 97.62%
+% System (I/O)      :  2.38%
+Mem reserved        : 10G/node
+Max Mem used        : 893.11M (pg-node166)
+Max Disk Write      : 71.68K (pg-node166)
+Max Disk Read       : 1.36M (pg-node166)
+
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Peregrine in your publications:
+
+https://wiki.hpc.rug.nl/peregrine/additional_information/scientific_output
+
+################################################################################

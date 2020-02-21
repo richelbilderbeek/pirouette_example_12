@@ -1,0 +1,52 @@
+% latex table generated in R 3.6.1 by xtable 1.8-4 package
+% Wed Feb 19 15:00:48 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{lllrrrr}
+  \hline
+Site model & Clock model & Tree prior & log(evidence) & log(evidence error) & Weight & ESS \\ 
+  \hline
+GTR & RLN & BD & -8216.499 & 5.993 & 0.000 & 9.223 \\ 
+  GTR & RLN & CBS & -8226.339 & 4.123 & 0.000 & 12.233 \\ 
+  GTR & RLN & CCP & -8217.612 & 6.777 & 0.000 & 5.823 \\ 
+  GTR & RLN & CEP & -8209.279 & 4.319 & 0.000 & 8.676 \\ 
+  GTR & RLN & Yule & -8245.072 & 5.325 & 0.000 & 6.627 \\ 
+  GTR & Strict & BD & -8221.432 & 4.519 & 0.000 & 12.585 \\ 
+  GTR & Strict & CBS & -8276.552 & 5.173 & 0.000 & 8.793 \\ 
+  GTR & Strict & CCP & -8235.564 & 5.253 & 0.000 & 8.742 \\ 
+  GTR & Strict & CEP & -8195.053 & 3.409 & 0.218 & 10.617 \\ 
+  GTR & Strict & Yule & -8222.681 & 7.080 & 0.000 & 5.288 \\ 
+  HKY & RLN & BD & -8198.751 & 4.083 & 0.005 & 4.177 \\ 
+  HKY & RLN & CBS & -8210.382 & 5.872 & 0.000 & 9.500 \\ 
+  HKY & RLN & CCP & -8202.539 & 4.315 & 0.000 & 9.129 \\ 
+  HKY & RLN & CEP & -8197.519 & 3.945 & 0.019 & 10.214 \\ 
+  HKY & RLN & Yule & -8198.682 & 3.405 & 0.006 & 11.836 \\ 
+  HKY & Strict & BD & -8214.405 & 6.019 & 0.000 & 4.806 \\ 
+  HKY & Strict & CBS & -8203.724 & 4.323 & 0.000 & 9.688 \\ 
+  HKY & Strict & CCP & -8299.209 & 4.696 & 0.000 & 10.093 \\ 
+  HKY & Strict & CEP & -8197.895 & 3.873 & 0.013 & 8.317 \\ 
+  HKY & Strict & Yule & -8202.526 & 3.679 & 0.000 & 12.402 \\ 
+  JC & RLN & BD & -8206.699 & 4.794 & 0.000 & 9.055 \\ 
+  JC & RLN & CBS & -8195.757 & 3.795 & 0.108 & 7.772 \\ 
+  JC & RLN & CCP & -8205.826 & 5.101 & 0.000 & 7.713 \\ 
+  JC & RLN & CEP & -8196.252 & 3.931 & 0.066 & 4.821 \\ 
+  JC & RLN & Yule & -8201.729 & 4.598 & 0.000 & 5.201 \\ 
+  JC & Strict & BD & -8199.443 & 4.159 & 0.003 & 6.381 \\ 
+  JC & Strict & CBS & -8200.039 & 3.914 & 0.001 & 9.352 \\ 
+  JC & Strict & CCP & -8194.437 & 3.826 & 0.403 & 4.115 \\ 
+  JC & Strict & CEP & -8195.389 & 4.006 & 0.156 & 7.044 \\ 
+  JC & Strict & Yule & -8209.369 & 4.858 & 0.000 & 8.431 \\ 
+  TN & RLN & BD & -8215.394 & 5.601 & 0.000 & 9.925 \\ 
+  TN & RLN & CBS & -8217.091 & 6.125 & 0.000 & 11.063 \\ 
+  TN & RLN & CCP & -8205.107 & 4.449 & 0.000 & 10.245 \\ 
+  TN & RLN & CEP & -8207.112 & 5.016 & 0.000 & 9.134 \\ 
+  TN & RLN & Yule & -8208.899 & 5.159 & 0.000 & 6.720 \\ 
+  TN & Strict & BD & -8199.901 & 4.493 & 0.002 & 9.178 \\ 
+  TN & Strict & CBS & -8200.626 & 4.311 & 0.001 & 8.915 \\ 
+  TN & Strict & CCP & -8261.586 & 5.473 & 0.000 & 12.057 \\ 
+  TN & Strict & CEP & -8209.897 & 5.501 & 0.000 & 8.531 \\ 
+  TN & Strict & Yule & -8206.901 & 4.728 & 0.000 & 8.780 \\ 
+   \hline
+\end{tabular}
+\caption{Evidences for the true phylogeny} 
+\end{table}
