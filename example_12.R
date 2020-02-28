@@ -1,59 +1,37 @@
+#
+# Difference from standard: 
+# - no generative model
+# - no twinning
+#
 # Works under Linux and MacOS only
 
 
 library(pirouette)
 suppressMessages(library(ggplot2))
 
-root_folder <- getwd()
+################################################################################
+# Constants
+################################################################################
+is_testing <- is_on_travis()
 example_no <- 12
 rng_seed <- 314
-example_folder <- file.path(root_folder, paste0("example_", example_no, "_", rng_seed))
-dir.create(example_folder, showWarnings = FALSE, recursive = TRUE)
-setwd(example_folder)
+folder_name <- paste0("example_", example_no, "_", rng_seed)
+
+
 set.seed(rng_seed)
-testit::assert(is_beast2_installed())
-phylogeny  <- ape::read.tree(
+phylogeny <- ape::read.tree(
   text = "(((A:8, B:8):1, C:9):1, ((D:8, E:8):1, F:9):1);"
 )
 
-alignment_params <- create_alignment_params(
-  sim_tral_fun = get_sim_tral_with_std_nsm_fun(
-    mutation_rate = 0.1
-  ),
-  root_sequence = create_blocked_dna(length = 1000),
-  rng_seed = rng_seed
+pir_params <- create_std_pir_params(
+  folder_name = folder_name
 )
+pir_params$twinning_params <- NA
+stop("Remove generative experiment")
 
-# All experiments
-candidate_experiments <- create_all_experiments()
-check_experiments(candidate_experiments)
-
-experiments <- candidate_experiments
-
-# Set the RNG seed
-for (i in seq_along(experiments)) {
-  experiments[[i]]$beast2_options$rng_seed <- rng_seed
+if (is_testing) {
+  pir_params <- shorten_pir_params(pir_params)
 }
-
-check_experiments(experiments)
-
-# Shorter on Travis
-if (is_on_travis()) {
-  for (i in seq_along(experiments)) {
-    experiments[[i]]$inference_model$mcmc$chain_length <- 3000
-    experiments[[i]]$inference_model$mcmc$store_every <- 1000
-    experiments[[i]]$est_evidence_mcmc$chain_length <- 3000
-    experiments[[i]]$est_evidence_mcmc$store_every <- 1000
-    experiments[[i]]$est_evidence_mcmc$epsilon <- 100.0
-  }
-}
-
-pir_params <- create_pir_params(
-  alignment_params = alignment_params,
-  experiments = experiments
-)
-
-rm_pir_param_files(pir_params)
 
 errors <- pir_run(
   phylogeny,
