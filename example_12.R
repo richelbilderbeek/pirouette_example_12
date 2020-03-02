@@ -1,5 +1,5 @@
 #
-# Difference from standard: 
+# Difference from standard:
 # - no generative model
 # - no twinning
 #
@@ -24,7 +24,9 @@ pir_params <- create_std_pir_params(
   folder_name = folder_name
 )
 pir_params$twinning_params <- NA
-stop("Remove generative experiment")
+# Remove generative experiment
+pir_params$experiments <- pir_params$experiments[-1]
+
 if (is_testing) {
   pir_params <- shorten_pir_params(pir_params)
 }
